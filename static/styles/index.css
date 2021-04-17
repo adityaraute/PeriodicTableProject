@@ -11,8 +11,15 @@ header{
     background: #ffacac;
     text-align: center;
     padding-top: 10vh;
+    padding-bottom: 1vh;
 }
 
 .menu{
+    padding-top: 10vh;
     display: flex;
+    justify-content:space-evenly;
+    flex-direction: row;
+    font-size: larger;
+    font-weight: bolder;
+    list-style-type: none;
 }
