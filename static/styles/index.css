@@ -10,12 +10,27 @@ body{
 header{
     background: #ffacac;
     text-align: center;
-    padding-top: 10vh;
+    padding-top: 3vh;
     padding-bottom: 1vh;
 }
 
+.div{
+    text-align: center;
+
+}
+
+.half-circle{
+    background: #5289F3;
+    margin: auto;
+    margin-top: -25px;
+    width: 400px;
+    height: 200px;
+    border-bottom-right-radius: 400px;
+    border-bottom-left-radius: 400px;
+}
+
 .menu{
-    padding-top: 10vh;
+    padding-top: 18vh;
     display: flex;
     justify-content:space-evenly;
     flex-direction: row;
