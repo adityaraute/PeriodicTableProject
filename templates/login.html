@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+    {% if invalidLogin %}
+      <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Please check credentials.
+      </div>
+      {% endif %}
+
     <div class="wrapper">
       <div class="title-text">
         <div class="title login">Login Form</div>
@@ -20,12 +27,12 @@
           <div class="slider-tab"></div>
         </div>
         <div class="form-inner">
-          <form action="#" class="login">
+          <form action="/login" method="POST" class="login">
             <div class="field">
-              <input type="text" placeholder="Email Address" required>
+              <input type="text" name="loginEmail" placeholder="Email Address" required>
             </div>
             <div class="field">
-              <input type="password" placeholder="Password" required>
+              <input type="password" name="loginPassword" placeholder="Password" required>
             </div>
             <div class="pass-link">
               <a href="#">Forgot password?</a>
@@ -38,15 +45,15 @@
               Not a member? <a href="">Signup now</a>
             </div>
           </form>
-          <form action="#" class="signup">
+          <form action="/signup" method="POST" class="signup">
             <div class="field">
-              <input type="text" placeholder="Email Address" required>
+              <input type="text" name="signUpEmail" placeholder="Email Address" required>
             </div>
             <div class="field">
-              <input type="password" placeholder="Password" required>
+              <input type="password" name="signUpPassword" placeholder="Password" required>
             </div>
             <div class="field">
-              <input type="password" placeholder="Confirm password" required>
+              <input type="password" name="signUpPasswordConfirmed" placeholder="Confirm password" required>
             </div>
             <div class="field btn">
               <div class="btn-layer"></div>
