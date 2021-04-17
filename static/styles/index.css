@@ -39,11 +39,18 @@ header{
 }
 
 .menu{
-    padding-top: 18vh;
+    padding-top: 15vh;
     display: flex;
     justify-content:space-evenly;
     flex-direction: row;
-    font-size: larger;
+    font-size: 22px;
     font-weight: bolder;
     list-style-type: none;
+}
+.menu a{
+    text-decoration: none;
+    color: black
+}
+.menu a:hover{
+    text-decoration: underline;
 }
