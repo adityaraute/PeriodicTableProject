@@ -39,7 +39,7 @@ header{
 }
 
 .menu{
-    padding-top: 15vh;
+    padding-top: 10vh;
     display: flex;
     justify-content:space-evenly;
     flex-direction: row;
