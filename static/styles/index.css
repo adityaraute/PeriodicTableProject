@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ravi+Prakash&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -27,6 +29,13 @@ header{
     height: 200px;
     border-bottom-right-radius: 400px;
     border-bottom-left-radius: 400px;
+}
+
+.half-circle h1{
+    padding-top: 100px;
+    color: #e2dfdf;
+    font-family: 'Ravi Prakash', cursive;
+    font-size: 45px;
 }
 
 .menu{
