@@ -880,15 +880,15 @@ html,body{
 
 
 ::selection{
-  background: #fa4299;
+  background: #4282fa;
   color: #fff;
 }
 .alert {
   padding: 20px;
-  background-color: #f44336; /* Red */
+  background-color: #3f98e0; 
   color: white;
   transition: opacity 0.6s;
-  margin-bottom: 15px;
+  margin: 15px;
 }
 
 /* The close button */
@@ -931,12 +931,13 @@ html,body{
   position: relative;
   display: flex;
   height: 50px;
-  width: 100%;
+  width: 98%;
   overflow: hidden;
   margin: 30px 0 10px 0;
   justify-content: space-between;
   border: 1px solid lightgrey;
   border-radius: 5px;
+  background: rgb(11, 11, 49);
 }
 .slide-controls .slide{
   height: 100%;
@@ -951,7 +952,7 @@ html,body{
   transition: all 0.6s ease;
 }
 .slide-controls label.signup{
-  color: #000;
+  color: white;
 }
 .slide-controls .slider-tab{
   position: absolute;
@@ -975,10 +976,10 @@ input[type="radio"]{
   user-select: none;
 }
 #signup:checked ~ label.login{
-  color: #000;
+  color: whitesmoke;
 }
 #login:checked ~ label.signup{
-  color: #000;
+  color: whitesmoke;
 }
 #login:checked ~ label.login{
   cursor: default;
