@@ -2,6 +2,12 @@
 
 
 {% block content %}
+
+{% if not user %}
+<h3 style="margin: 20px auto; text-align: center;"> Please login before attempting the quiz</h3>
+
+{% else %}
+
 <div class="quiz-container" id="quiz">
       <div class="quiz-header">
         <h2 id="question">Question text</h2>
@@ -182,16 +188,27 @@ submitBtn.addEventListener('click', () => {
 
     if (currentQuiz < quizData.length) {
       loadQuiz();
+      
     } else {
       quiz.innerHTML = `
         <h2>You answered ${score}/${quizData.length} questions correctly</h2>
 
-        <button onclick="location.reload()">Reload</button>
+        <form action="/quiz" method="POST" >
+          <input type="number" name="quizscore" value=${score} hidden >
+          <div>
+        <input type="submit" value="Reload" class ='button'>
+</div>
+
+        </form>
       `;
+
     }
   }
 });
     
 
   </script>
+
+{% endif %}
+
 {% endblock %}

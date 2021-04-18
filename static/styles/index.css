@@ -55,6 +55,17 @@ header{
     text-decoration: underline;
 }
 
+.flex{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.flex a{
+  text-decoration: none !important;
+  font-weight: bolder !important;
+  color: red !important;
+  float: right;
+  margin-top: 5px;
+}
 
 /* Home page CSS */
 
@@ -81,6 +92,15 @@ header{
   
 }
 /* periodic table CSS*/
+
+
+
+.profile{
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  margin: 10px 10px;
+}
 
 body {
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto,
@@ -1153,7 +1173,7 @@ form .btn input[type="submit"]{
   cursor: pointer;
 }
 
-.quiz-container button {
+.quiz-container .button, .quiz-container #submit {
   background: #4a66e4;
   border: none;
   color: #fff;
@@ -1165,12 +1185,12 @@ form .btn input[type="submit"]{
   padding: 1.3em;
 }
 
-.quiz-container button:hover {
+.quiz-container .button:hover, .quiz-container #submit :hover  {
   background:  #614ae4;
 
 }
 
-.quiz-container button:focus {
+.quiz-container .button:focus, .quiz-container #submit :focus  {
   outline: none;
   background: #4a66e4;
 }

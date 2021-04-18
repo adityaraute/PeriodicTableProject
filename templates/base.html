@@ -8,11 +8,19 @@
     <link type="text/css" rel="stylesheet" href="../static/styles/index.css" />
 </head>
 <body>
+
+    {% if user %}
+    <div class="flex">
+        <p class = 'profile'>Hello {{user}}</p>
+        <a href = "/logout">Logout</a>
+    </div>
+{% endif %}
     <header>
         <div class="div">
             <div class = 'half-circle'><h1>FUN LEARN</h1></div>
 
         </div>
+
         <ul class="menu">
                 <li><a href = "/">HOME</a></li>
                 <li><a href = "/login">LOGIN</a></li>
@@ -20,6 +28,8 @@
                 <li><a href = "/quiz">QUIZ</a></li>
         </ul>
     </header>
+
+
 
     {% block content %}
     {% endblock %}

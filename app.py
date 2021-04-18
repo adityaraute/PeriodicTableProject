@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request, session, redirect, url_for
 import pyrebase
 app = Flask(__name__)
 
@@ -13,25 +13,33 @@ firebaseConfig = {
 }
 firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
+firedb = firebase.database()
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    try:
+        return render_template("index.html", user = session['username'])
+    except:
+        return render_template("index.html")
+
 
 @app.route("/elements")
 def elements():
-    return render_template("elements.html")
+    try:
+        return render_template("elements.html", user = session['username'])
+    except:
+        return render_template("elements.html")
+
 
 @app.route("/login",methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         loginEmail = request.form['loginEmail']
         loginPassword = request.form['loginPassword']
-
-        print(loginEmail,loginEmail)
         try:
             auth.sign_in_with_email_and_password(loginEmail, loginPassword)
-            return render_template('elements.html')
+            session['username'] = loginEmail
+            return render_template('quizpage.html', user = session['username'])
         except:
             return render_template('login.html', invalidLogin=True)
     else:
@@ -47,7 +55,7 @@ def signup():
             return render_template('login.html',invalidLogin=True)
         try:
             auth.create_user_with_email_and_password(signUpEmail, signUpPassword)
-            return render_template('elements.html')
+            return render_template('quizpage.html', user = session['username'])
         except Exception as e:
             print(e)
             print("Got error while sign up")
@@ -55,10 +63,46 @@ def signup():
     else:
         return render_template("login.html",invalidLogin=False)
 
-@app.route("/quiz")
+@app.route("/quiz",methods=['GET', 'POST'])
 def quiz():
-    return render_template("quizpage.html")
+    if request.method == 'POST':
+        my_var = request.form['quizscore']
+        print(my_var)
+        username = session['username'].split('.')[0]
+        try:
+            firedb.child("users").child(username).push(data={'score': my_var})
+        except:
+            firedb.child("users").set({username: {'score': my_var}})
+
+        try:
+            return render_template("quizpage.html", user = session['username'])
+        except:
+            return render_template('quizpage.html')
+    else:
+        try:
+            return render_template("quizpage.html", user = session['username'])
+        except:
+            return render_template('quizpage.html')
+
+
+@app.route('/logout')
+def logout():
+    try:
+       # remove the username from the session if it is there
+            return render_template('profile.html')
+    except:
+        pass
+    return redirect(url_for('home'))
+
+@app.route('/profile')
+def profile():
+    try:
+        session.get('username', None)
+    except:
+        pass
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
   app.debug = True
+  app.secret_key = 'random'
   app.run()
