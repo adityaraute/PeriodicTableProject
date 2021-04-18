@@ -6,24 +6,24 @@
       <div class="quiz-header">
         <h2 id="question">Question text</h2>
         <ul class = 'ul'>
-          <li class = 'li'>
+          <li class = 'li' >
             <input type="radio" name="answer" id="a" class="answer" />
-            <label for="a" id="a_text">Question</label>
+            <label for="a" id="a_text" onclick="changeColor('a_text')">Question</label>
           </li>
 
           <li class = 'li'>
             <input type="radio" name="answer" id="b" class="answer" />
-            <label for="b" id="b_text">Question</label>
+            <label for="b" id="b_text" onclick="changeColor('b_text')">Question</label>
           </li>
 
-          <li class = 'li'>
+          <li class = 'li' >
             <input type="radio" name="answer" id="c" class="answer" />
-            <label for="c" id="c_text">Question</label>
+            <label for="c" id="c_text" onclick="changeColor('c_text')">Question</label>
           </li>
 
           <li class = 'li'>
             <input type="radio" name="answer" id="d" class="answer" />
-            <label for="d" id="d_text">Question</label>
+            <label for="d" id="d_text" onclick="changeColor('d_text')">Question</label>
           </li>
         </ul>
       </div>
@@ -140,6 +140,15 @@ function loadQuiz() {
   b_text.innerText = currentQuizData.b;
   c_text.innerText = currentQuizData.c;
   d_text.innerText = currentQuizData.d;
+}
+
+function changeColor(val){
+  document.getElementById('a_text').style.color = 'white';
+  document.getElementById('b_text').style.color = 'white';
+  document.getElementById('c_text').style.color = 'white';
+  document.getElementById('d_text').style.color = 'white';
+  document.getElementById(val).style.color = 'greenyellow';
+
 }
 
 function deselectAnswers() {
