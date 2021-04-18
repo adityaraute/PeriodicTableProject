@@ -55,6 +55,31 @@ header{
     text-decoration: underline;
 }
 
+
+/* Home page CSS */
+
+.home-main{
+  margin: 15px auto;
+  display: flex;
+}
+.home-right{
+  margin: auto;
+  text-align: center;
+}
+.home-right img{
+  /* margin-left: calc(50% - 150px); */
+  height: 300px;
+  border-radius: 50%;
+}
+.home-right-text{
+  margin: auto;
+  text-align: center;
+  max-width: 70%;
+}
+.home-right-text h3{
+  margin: 15px auto;
+  
+}
 /* periodic table CSS*/
 
 body {
