@@ -1154,7 +1154,7 @@ form .btn input[type="submit"]{
 }
 
 .quiz-container button {
-  background-color: #8e44ad;
+  background: #4a66e4;
   border: none;
   color: #fff;
   display: block;
@@ -1166,11 +1166,12 @@ form .btn input[type="submit"]{
 }
 
 .quiz-container button:hover {
-  background-color: #732d91;
+  background:  #614ae4;
+
 }
 
 .quiz-container button:focus {
   outline: none;
-  background-color: #5e3370;
+  background: #4a66e4;
 }
 
