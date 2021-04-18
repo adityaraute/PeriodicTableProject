@@ -877,6 +877,8 @@ html,body{
   place-items: center;
   background: -webkit-linear-gradient(left, #a445b2, #fa4299);
 } */
+
+
 ::selection{
   background: #fa4299;
   color: #fff;
@@ -908,10 +910,11 @@ html,body{
 .wrapper{
   overflow: hidden;
   max-width: 390px;
-  background: #fff;
   padding: 30px;
   border-radius: 5px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 20px #012c63;
+  margin: 20px auto;
+  background: #232531;
 }
 .wrapper .title-text{
   display: flex;
@@ -957,7 +960,7 @@ html,body{
   left: 0;
   z-index: 0;
   border-radius: 5px;
-  background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+  background: -webkit-linear-gradient(left, #4a66e4, #47128d);
   transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
 input[type="radio"]{
@@ -1010,7 +1013,7 @@ input[type="radio"]{
   transition: all 0.3s ease;
 }
 .form-inner form .field input:focus{
-  border-color: #fc83bb;
+  border-color: #070070;
   /* box-shadow: inset 0 0 3px #fb6aae; */
 }
 .form-inner form .field input::placeholder{
@@ -1029,7 +1032,7 @@ form .field input:focus::placeholder{
 }
 .form-inner form .pass-link a,
 .form-inner form .signup-link a{
-  color: #fa4299;
+  color: #0077ff;
   text-decoration: none;
 }
 .form-inner form .pass-link a:hover,
@@ -1048,7 +1051,7 @@ form .btn .btn-layer{
   width: 300%;
   position: absolute;
   left: -100%;
-  background: -webkit-linear-gradient(right, #a445b2, #fa4299, #a445b2, #fa4299);
+  background: -webkit-linear-gradient(right, #4a66e4, #47128d,#4a66e4, #47128d);
   border-radius: 5px;
   transition: all 0.4s ease;;
 }
