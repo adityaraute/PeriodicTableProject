@@ -2,5 +2,185 @@
 
 
 {% block content %}
-<p>Quiz Page</p>
+<body>
+<div class="quiz-container" id="quiz">
+      <div class="quiz-header">
+        <h2 id="question">Question text</h2>
+        <ul>
+          <li>
+            <input type="radio" name="answer" id="a" class="answer" />
+            <label for="a" id="a_text">Question</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="b" class="answer" />
+            <label for="b" id="b_text">Question</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="c" class="answer" />
+            <label for="c" id="c_text">Question</label>
+          </li>
+
+          <li>
+            <input type="radio" name="answer" id="d" class="answer" />
+            <label for="d" id="d_text">Question</label>
+          </li>
+        </ul>
+      </div>
+      <button id="submit">Submit</button>
+    </div>
+ </body>
+<!-- partial -->
+  <script>
+    
+
+    const quizData = [
+  {
+    question: '1. The rows in Periodic Table are called __________.',
+    a: 'Classes',
+    b: 'Periods',
+    c: 'Chemicals',
+    d: 'Blocks',
+    correct: 'b',
+  },
+  {
+    question: '2. Which one of the following elements is very rare?',
+    a: 'Thorium',
+    b: 'Uranium',
+    c: 'Francium',
+    d: 'Nihonium',
+    correct: 'c',
+  },
+  {
+    question: "3. In Periodic Table, elements are arranged in left to right fashion in each row, based on ________.",
+    a: 'Number of protons in their nucleus',
+    b: 'Number of electrons in their nucleus',
+    c: 'Number of neutrons in their nucleus',
+    d: 'All the above',
+    correct: 'a',
+  },
+  {
+    question: '4. The columns of the Periodic Table is called ______.',
+    a: 'Classes',
+    b: 'Groups',
+    c: 'Divisions',
+    d: 'Grades',
+    correct: 'b',
+  },
+  {
+    question: '5. The noble or inert gases are lined up in the ________ column of the periodic table.',
+    a: 'Sixteenth',
+    b: 'Seventeeth',
+    c: 'Eighteenth',
+    d: 'Nineteenth',
+    correct: 'c',
+  },
+  {
+    question: '6. Periodic Table was formulated by _________.',
+    a: 'Henry Moseley',
+    b: 'Antoine Lavoisier',
+    c: 'John Newlands',
+    d: 'Dmitri Mendeleev',
+    correct: 'd',
+  },
+  {
+    question: '7. Which element in the Periodic Table has the highest atomic number and highest atomic mass of all known elements?',
+    a: 'Oganesson',
+    b: 'Livermorium',
+    c: 'Tellurium',
+    d: 'Rhenium',
+    correct: 'a',
+  },
+  {
+    question: '8. Which of the following statements are TRUE?',
+    a: 'The first 94 elements in Periodic Table occur naturally',
+    b: 'Elements 95 to 118 have only been synthesized in laboratories or nuclear reactors.',
+    c: 'Alkali Metals occupy the left-most column of the Periodic Table.',
+    d: 'All are True',
+    correct: 'd',
+  },
+  {
+    question: '9. ________ was the first man-made or artificially produced element.',
+    a: 'Roentgenium',
+    b: 'Nihonium',
+    c: 'Technetium',
+    d: 'Tantalum',
+    correct: 'c',
+  },
+  {
+    question: '10. _________ is responsible for maintaining the periodic table.',
+    a: 'IUPAC',
+    b: 'IUCN',
+    c: 'IUPAP',
+    d: 'PubChem',
+    correct: 'a',
+  },
+];
+
+const quiz = document.getElementById('quiz'),
+  answerEls = document.querySelectorAll('.answer'),
+  questionEl = document.getElementById('question'),
+  a_text = document.getElementById('a_text'),
+  b_text = document.getElementById('b_text'),
+  c_text = document.getElementById('c_text'),
+  d_text = document.getElementById('d_text'),
+  submitBtn = document.getElementById('submit');
+
+let currentQuiz = 0,
+  score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+  deselectAnswers();
+
+  const currentQuizData = quizData[currentQuiz];
+
+  questionEl.innerText = currentQuizData.question;
+  a_text.innerText = currentQuizData.a;
+  b_text.innerText = currentQuizData.b;
+  c_text.innerText = currentQuizData.c;
+  d_text.innerText = currentQuizData.d;
+}
+
+function deselectAnswers() {
+  answerEls.forEach((answerEl) => (answerEl.checked = false));
+}
+
+function getSelected() {
+  let answer;
+
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+
+  return answer;
+}
+
+submitBtn.addEventListener('click', () => {
+  const answer = getSelected();
+  if (answer) {
+    if (answer === quizData[currentQuiz].correct) {
+      score++;
+    }
+
+    currentQuiz++;
+
+    if (currentQuiz < quizData.length) {
+      loadQuiz();
+    } else {
+      quiz.innerHTML = `
+        <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+
+        <button onclick="location.reload()">Reload</button>
+      `;
+    }
+  }
+});
+    
+
+  </script>
 {% endblock %}
