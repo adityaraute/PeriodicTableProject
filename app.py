@@ -89,18 +89,23 @@ def quiz():
 def logout():
     try:
        # remove the username from the session if it is there
-            return render_template('profile.html')
+        session.pop('username', None)
     except:
         pass
     return redirect(url_for('home'))
 
-@app.route('/profile')
-def profile():
-    try:
-        session.get('username', None)
-    except:
-        pass
-    return redirect(url_for('home'))
+@app.route('/score')
+def score():
+        username = session['username'].split('.')[0]
+
+        data = firedb.child("users").child(username).get()
+        arr = []
+        for i in data.each():
+            arr.append(i.val()['score'])
+        return render_template('score.html', user = session['username'], data = sorted(arr)[::-1])
+    # except Exception as e:
+        # print(e)
+        return render_template('score.html')
 
 if __name__ == "__main__":
   app.debug = True

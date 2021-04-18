@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% if not user %}
+<h3 style="margin: 20px auto; text-align: center;"> Please login and attempt a quiz before checking scores</h3>
+
+{% else %}
+<div class="quiz-container" >
+
+      <div class="quiz-header">
+        <h2 id="question">Id: {{user}}</h2>
+        <h3 style="text-align: center;">Your highest scores: </h3>
+        {% for i in data %} 
+        <p style=" margin: 5px auto; text-align:center;color: whitesmoke;">{{i}}</p>
+        {% endfor %} 
+</div>
+{% endif %} 
+
+
+{% endblock %}
